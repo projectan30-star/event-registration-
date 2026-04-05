@@ -1,0 +1,585 @@
+/* ============================================
+   EVENT REGISTRATION - Global Styles
+   Aesthetic: Refined Indian cultural arts fest
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* --- CSS Variables (easy to customize) --- */
+:root {
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --text-primary: #1a1208;
+  --text-secondary: #6b6054;
+  --accent: #c8470a;        /* deep saffron */
+  --accent-light: #f5e8dc;
+  --gold: #c4962a;
+  --border: #e8e0d4;
+  --shadow: 0 2px 24px rgba(26,18,8,0.08);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --radius: 4px;
+  --transition: 0.22s ease;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ============================================
+   SHARED: HEADER / NAVBAR
+   ============================================ */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-back {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition);
+}
+
+.nav-back:hover { color: var(--accent); }
+.nav-back::before { content: '←'; font-size: 1rem; }
+
+/* ============================================
+   HOMEPAGE — HERO SECTION
+   ============================================ */
+.hero {
+  text-align: center;
+  padding: 80px 2rem 48px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto 16px;
+}
+
+/* Decorative divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin: 40px auto;
+  max-width: 300px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.divider-symbol {
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+/* ============================================
+   HOMEPAGE — EVENT CARDS
+   ============================================ */
+.events-section {
+  padding: 0 2rem 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  cursor: pointer;
+}
+
+.event-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+/* Color strip on top of each card */
+.card-strip {
+  height: 5px;
+}
+.event-card.lucida   .card-strip { background: linear-gradient(90deg, #c8470a, #e87a3c); }
+.event-card.nrityadarpan .card-strip { background: linear-gradient(90deg, #c4962a, #e8bf5c); }
+.event-card.metanoia .card-strip { background: linear-gradient(90deg, #3a6ea5, #6499cc); }
+
+.card-body {
+  padding: 28px 28px 24px;
+}
+
+.card-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.card-cta::after {
+  content: '→';
+  transition: transform var(--transition);
+}
+
+.event-card:hover .card-cta::after {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   EVENT PAGE — SLOTS
+   ============================================ */
+.event-hero {
+  padding: 64px 2rem 48px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.event-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.event-hero h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.event-hero p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 500px;
+}
+
+/* Slots */
+.slots-section {
+  padding: 0 2rem 80px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.slots-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.slot-btn {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition);
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
+
+.slot-btn:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.slot-time {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.slot-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.slot-icon {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* ============================================
+   REGISTRATION PAGE — FORM
+   ============================================ */
+.register-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  max-width: 960px;
+  margin: 48px auto 80px;
+  padding: 0 2rem;
+}
+
+@media (max-width: 640px) {
+  .register-layout { grid-template-columns: 1fr; }
+  .register-sidebar { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 32px; }
+  .slots-grid { grid-template-columns: 1fr; }
+}
+
+.register-sidebar {
+  padding-right: 40px;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-heading {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.sidebar-event {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.sidebar-slot {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-top: 8px;
+}
+
+.register-form-wrap {
+  padding-left: 40px;
+}
+
+@media (max-width: 640px) {
+  .register-form-wrap { padding-left: 0; }
+}
+
+.form-heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: var(--text-primary);
+}
+
+/* Form fields */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.form-group label span { color: var(--accent); }
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  background: var(--surface);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(200,71,10,0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 480px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+/* Submit button */
+.btn-submit {
+  width: 100%;
+  padding: 13px 24px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  margin-top: 8px;
+  letter-spacing: 0.02em;
+}
+
+.btn-submit:hover {
+  background: #a83b08;
+  transform: translateY(-1px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Error messages */
+.field-error {
+  font-size: 0.76rem;
+  color: #d0410f;
+  margin-top: 4px;
+  display: none;
+}
+
+.form-group.has-error input,
+.form-group.has-error select {
+  border-color: #d0410f;
+}
+
+.form-group.has-error .field-error {
+  display: block;
+}
+
+/* ============================================
+   SUCCESS STATE
+   ============================================ */
+.success-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(250, 248, 244, 0.96);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem;
+}
+
+.success-overlay.visible {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.success-overlay h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.success-overlay p {
+  color: var(--text-secondary);
+  max-width: 360px;
+  margin-bottom: 28px;
+  font-size: 0.93rem;
+}
+
+.btn-home {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--text-primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: background var(--transition);
+}
+
+.btn-home:hover { background: #333; }
+
+/* General status message below form */
+#form-status {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  min-height: 20px;
+}
+
+#form-status.error { color: #d0410f; }
+#form-status.success { color: #1e7a42; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}

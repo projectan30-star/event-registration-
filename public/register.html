@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Fest 2025</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Fest <span>2025</span></a>
+    <!-- Back link will be set by JS to go back to the correct event page -->
+    <a href="index.html" class="nav-back" id="back-link">Events</a>
+  </header>
+
+  <!-- ===== TWO-COLUMN REGISTRATION LAYOUT ===== -->
+  <div class="register-layout">
+
+    <!-- LEFT SIDEBAR: shows selected event & time slot -->
+    <aside class="register-sidebar">
+      <p class="sidebar-heading">You are registering for</p>
+      <h2 class="sidebar-event" id="sidebar-event">—</h2>
+      <div class="sidebar-slot" id="sidebar-slot">⏰ —</div>
+    </aside>
+
+    <!-- RIGHT: Registration Form -->
+    <main class="register-form-wrap">
+      <h3 class="form-heading">Your Details</h3>
+
+      <!--
+        The form uses id="registration-form"
+        We listen for the submit event in JavaScript (no action/method needed
+        since we handle submission via fetch API)
+      -->
+      <form id="registration-form" novalidate>
+
+        <!-- Hidden fields: auto-filled by JavaScript from URL params -->
+        <!-- These are submitted along with the visible fields -->
+        <input type="hidden" id="eventName" name="eventName" />
+        <input type="hidden" id="timeSlot"  name="timeSlot"  />
+
+        <!-- Name -->
+        <div class="form-group" id="group-name">
+          <label for="name">Full Name <span>*</span></label>
+          <input type="text" id="name" name="name" placeholder="e.g. Max Williams" />
+          <p class="field-error" id="error-name">Please enter your full name.</p>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group" id="group-email">
+          <label for="email">Email Address <span>*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" />
+          <p class="field-error" id="error-email">Please enter a valid email address.</p>
+        </div>
+
+        <!-- Mobile + Register Number (side by side on wider screens) -->
+        <div class="form-row">
+          <div class="form-group" id="group-mobile">
+            <label for="mobile">Mobile Number <span>*</span></label>
+            <input type="tel" id="mobile" name="mobile" placeholder="10-digit number" maxlength="10" />
+            <p class="field-error" id="error-mobile">Enter a valid 10-digit mobile number.</p>
+          </div>
+
+          <div class="form-group" id="group-registerNumber">
+            <label for="registerNumber">Register Number <span>*</span></label>
+            <input type="text" id="registerNumber" name="registerNumber" placeholder="e.g. 22CS001" />
+            <p class="field-error" id="error-registerNumber">Please enter your register number.</p>
+          </div>
+        </div>
+
+        <!-- Department -->
+        <div class="form-group" id="group-department">
+          <label for="department">Department <span>*</span></label>
+          <select id="department" name="department">
+            <option value="">Select your department</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Information Technology">Information Technology</option>
+            <option value="Electronics">Electronics &amp; Communication</option>
+            <option value="Mechanical">Mechanical Engineering</option>
+            <option value="Civil">Civil Engineering</option>
+            <option value="Electrical">Electrical Engineering</option>
+            <option value="Arts">Arts &amp; Humanities</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Other">Other</option>
+          </select>
+          <p class="field-error" id="error-department">Please select your department.</p>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn-submit" id="submit-btn">
+          Complete Registration
+        </button>
+
+        <!-- General status message (shown below button) -->
+        <p id="form-status"></p>
+
+      </form>
+    </main>
+  </div>
+
+  <!-- ===== SUCCESS OVERLAY ===== -->
+  <!--
+    This overlay is hidden by default.
+    After a successful submission, we add the class "visible" to show it.
+  -->
+  <div class="success-overlay" id="success-overlay">
+    <div class="success-icon">🎉</div>
+    <h2>Registration Successful!</h2>
+    <p id="success-message">
+      You've been registered for the event. See you there!
+    </p>
+    <a href="index.html" class="btn-home">Back to Events</a>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    &copy; 2025 Fest. All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

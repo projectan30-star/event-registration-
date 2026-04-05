@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Details — Fest 2025</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Fest <span>2025</span></a>
+    <!-- Back link navigates to homepage -->
+    <a href="index.html" class="nav-back">All Events</a>
+  </header>
+
+  <!-- ===== EVENT HERO SECTION ===== -->
+  <!-- Content here is filled dynamically by JavaScript below -->
+  <section class="event-hero">
+    <span class="event-badge" id="event-badge">Loading...</span>
+    <h2 id="event-title">Loading...</h2>
+    <p id="event-description">Please wait while we load the event details.</p>
+  </section>
+
+  <div class="divider">
+    <span class="divider-symbol">✦</span>
+  </div>
+
+  <!-- ===== TIME SLOT SELECTION ===== -->
+  <section class="slots-section">
+    <p class="slots-label">Select a Show Time</p>
+
+    <div class="slots-grid">
+      <!--
+        These buttons call selectSlot() with the time slot string.
+        JavaScript reads the event name from the URL and redirects
+        to register.html with both event name and time slot as query params.
+      -->
+      <button class="slot-btn" onclick="selectSlot('12 PM')">
+        <span class="slot-icon">🌤️</span>
+        <span class="slot-time">12 PM</span>
+        <span class="slot-label">Afternoon Show</span>
+      </button>
+
+      <button class="slot-btn" onclick="selectSlot('3 PM')">
+        <span class="slot-icon">🌅</span>
+        <span class="slot-time">3 PM</span>
+        <span class="slot-label">Evening Show</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    &copy; 2025 Fest. All rights reserved.
+  </footer>
+
+  <script>
+    // ============================================================
+    // event.html — JavaScript
+    //
+    // This script:
+    // 1. Reads the event name from the URL query parameter (?event=...)
+    // 2. Fills in the page content dynamically
+    // 3. When a slot is clicked, redirects to register.html with
+    //    both event name and time slot as query parameters
+    // ============================================================
+
+    // --- Step 1: Read the event name from the URL ---
+    // e.g. event.html?event=Lucida  →  eventName = "Lucida"
+    const params    = new URLSearchParams(window.location.search);
+    const eventName = params.get('event');
+
+    // If no event was passed, redirect back to homepage
+    if (!eventName) {
+      window.location.href = 'index.html';
+    }
+
+    // --- Step 2: Event details map ---
+    // Add descriptions and badge labels for each event here
+    const eventDetails = {
+      'Lucida': {
+        badge: 'Music & Arts',
+        description: 'An electrifying showcase of light, sound, and performance. Experience music and visual art like never before.'
+      },
+      'Nrityadarpan': {
+        badge: 'Classical Dance',
+        description: 'A mirror of movement — celebrating the grace and grandeur of Indian classical and folk dance traditions.'
+      },
+      'Metanoia': {
+        badge: 'Theatre & Drama',
+        description: 'A journey of transformation — powerful narratives brought to life through immersive theatrical performances.'
+      }
+    };
+
+    // --- Step 3: Fill in the page with event details ---
+    const details = eventDetails[eventName] || {
+      badge: 'Event',
+      description: 'Join us for this exciting event.'
+    };
+
+    document.getElementById('event-badge').textContent  = details.badge;
+    document.getElementById('event-title').textContent  = eventName;
+    document.getElementById('event-description').textContent = details.description;
+    document.title = eventName + ' — Fest 2025';
+
+    // --- Step 4: Handle slot selection ---
+    // When user clicks a slot button, redirect to the registration page
+    // passing both ?event=... and ?slot=... in the URL
+    function selectSlot(timeSlot) {
+      // encodeURIComponent ensures spaces and special chars are URL-safe
+      const url = `register.html?event=${encodeURIComponent(eventName)}&slot=${encodeURIComponent(timeSlot)}`;
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+</html>
